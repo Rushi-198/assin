@@ -70,7 +70,9 @@ p .box{
  margin-left: 10px;
 }
 
-
+::ng-deep span.mat-expansion-indicator {
+  display: none;
+}
 
 .box{
   background-color: #e6cb60 !important;
