@@ -1,0 +1,91 @@
+header{
+    background-color: brown;
+    
+}
+
+.navlist{
+
+    list-style: none;
+   text-align: right;
+   display: flex;
+   align-content: flex-end;
+  // flex-direction: row-reverse;
+   justify-content: flex-end;
+   margin-bottom: 10px;
+
+
+   li a{
+    padding: 10px ;
+    text-decoration: none;
+    color: black;
+    background-color: white;
+     border-right: 1px solid black;
+   cursor: pointer;
+
+   }
+}
+
+.active{
+    background-color: yellow !important;
+}
+
+
+.mat-form-field + .mat-form-field {
+    margin-left: 8px;
+  }
+
+
+  .ha{
+    background-color: #666666;
+   padding: 10px;
+    color: white;
+  }
+
+  .mat-expansion-panel-header{
+    background-color: #e0e0e0;
+
+
+  }
+
+  .mat-expansion-panel-spacing {
+    margin:  0px;
+}
+.search-head {
+  color: red;
+}
+p{
+    background-color: #ffffdd;
+    padding: 15px 20px;
+    border-bottom: 2px dotted black;
+    margin-bottom: 0px;
+    
+}
+
+p .box{
+  background-color: #e6cb60 !important;
+ padding: 0px 5px; 
+ margin-right: 10px;
+}
+
+
+
+.box{
+  background-color: #e6cb60 !important;
+ padding: 0px 8px; 
+ margin-right: 9px;
+}
+
+mat-expansion-panel-header  .mat-icon{
+  color: #c2607a !important;
+  padding: 3px 3px; 
+ margin-right: 10px;
+}
+
+::ng-deep.mat-expansion-panel-body {
+    padding: 0px !important;
+
+}
+
+mat-expansion-panel-header{
+  border-bottom: 2px dotted black;
+}
