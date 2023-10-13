@@ -1,32 +1,35 @@
 {
-    
+      "Good Morning" : "صباح الخير",  
+
+      "Hello": "مرحبًا",
+
         "System Administration" : "إدارة النظام",
     
-        " Private warehouses"  : "المستودعات الخاصة",
+        "Private warehouses"  : "المستودعات الخاصة",
     
-      " Sports events Clearing Agency Authorization" : "تصريح وكالة تخليص الأحداث الرياضية",
+      "Sports events Clearing Agency Authorization" : "تصريح وكالة تخليص الأحداث الرياضية",
       
-      " Registration" : " تسجيل" ,
+      "Registration" : " تسجيل" ,
      
-      " Account Management" : "ادارة الحساب",
+      "Account Management" : "ادارة الحساب",
     
-      " Activate Account" : "تفعيل حساب",
+      "Activate Account" : "تفعيل حساب",
     
-     " User Management" : "إدارةالمستخدم",
+     "User Management" : "إدارةالمستخدم",
     
        "Approve Clearing Agency": "الموافقة على وكالة المقاصة",
     
        "Approve Clearing Agent" : "الموافقة على وكيل المقاصة",
     
-       "Reset Password/Unlock User " :  "إعادة تعيين كلمة المرور/فتح المستخدم",  
+       "Reset Password/Unlock User" :  "إعادة تعيين كلمة المرور/فتح المستخدم",  
 
-      " Print User ID Card" : "طباعة بطاقة هوية المستخدم ",
+      "Print User ID Card" : "طباعة بطاقة هوية المستخدم ",
     
-       "Search for AEO traders" : "ابحث عن تجار aeo",
+       "Search for AEO traders" : "ابحث عن تجار",
      
        "Create Request": "إنشاء طلب",
     
-        " Cargo Manifest": "بيان البضائع  ",
+        "Cargo Manifest": "بيان البضائع  ",
     
         "Detained Goods": "البضائع المحتجزة",
     

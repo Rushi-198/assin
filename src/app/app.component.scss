@@ -55,16 +55,19 @@ header{
 }
 p{
     background-color: #ffffdd;
-    padding: 15px 20px;
+    padding: 15px 26px;
     border-bottom: 2px dotted black;
     margin-bottom: 0px;
-    
+   
 }
+
+
 
 p .box{
   background-color: #e6cb60 !important;
  padding: 0px 5px; 
  margin-right: 10px;
+ margin-left: 10px;
 }
 
 
@@ -73,6 +76,7 @@ p .box{
   background-color: #e6cb60 !important;
  padding: 0px 8px; 
  margin-right: 9px;
+ margin-left: 10px;
 }
 
 mat-expansion-panel-header  .mat-icon{
@@ -88,4 +92,11 @@ mat-expansion-panel-header  .mat-icon{
 
 mat-expansion-panel-header{
   border-bottom: 2px dotted black;
+}
+
+img{
+  height: 175px;
+  width: 100%;
+  object-fit: cover;
+
 }

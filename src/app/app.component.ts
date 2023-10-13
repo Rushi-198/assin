@@ -1,13 +1,14 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
-import { Subject } from 'rxjs';
 
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: [ './app.component.scss' ]
+  styleUrls: [ './app.component.scss' ],
+  changeDetection: ChangeDetectionStrategy.OnPush
+
 })
 export class AppComponent implements OnInit, AfterViewInit {
   title = 'practice1';
@@ -16,20 +17,24 @@ export class AppComponent implements OnInit, AfterViewInit {
   constructor(private translate: TranslateService) {
     this.addLanguage()
 
-
-
   }
+
   ngAfterViewInit(): void {
-    console.log(this.row.nativeElement);
-    if (localStorage.getItem('lang')?.includes('ar')) {
+    const lang = localStorage.getItem('lang')
 
-      this.row.nativeElement?.classList.add('flex-row-reverse')
-    } else {
+    if (lang) {
+      this.currentLanguage = lang
+      if (lang?.includes('ar')) {
+        console.log('yes');
 
-      this.row.nativeElement?.classList.remove('flex-row-reverse')
+        this.row.nativeElement?.classList.add('flex-row-reverse')
+      } else {
+        this.row.nativeElement?.classList.remove('flex-row-reverse')
 
+      }
     }
   }
+
   languageArray: Array<string> = this.translate.getLangs();
   currentLanguage: string = this.translate.currentLang;
 
@@ -50,6 +55,8 @@ export class AppComponent implements OnInit, AfterViewInit {
   switchLanguage(language: string) {
     localStorage.setItem('lang', language)
     this.translate.use(language);
+
+    language.includes('ar') ? this.row.nativeElement.classList.add('flex-row-reverse') : this.row.nativeElement.classList.remove('flex-row-reverse')
   }
 
 
@@ -78,6 +85,8 @@ export class AppComponent implements OnInit, AfterViewInit {
 
 
 
+
+
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 5,
@@ -90,19 +99,18 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   public data = [
     { Sno: 1, EstablishmentID: '12356784', CRNumber: '', CustomsCode: 'L2775', Agencyname: 'new ncm2', Status: 'pending Approval', CreationDate: '27/08/2023', ClearingAgencyType: 'Goverment' },
-    { Sno: 2, EstablishmentID: '34555558', CRNumber: '', CustomsCode: 'L2775', Agencyname: 'new ncm2', Status: 'pending Approval', CreationDate: '27/08/2023', ClearingAgencyType: 'Goverment' },
-    { Sno: 3, EstablishmentID: '32321324', CRNumber: '', CustomsCode: 'L2775', Agencyname: 'new ncm2', Status: 'pending Approval', CreationDate: '27/08/2023', ClearingAgencyType: 'Goverment' },
-    { Sno: 4, EstablishmentID: '97876532', CRNumber: '', CustomsCode: 'L2775', Agencyname: 'new ncm2', Status: 'pending Approval', CreationDate: '27/08/2023', ClearingAgencyType: 'Goverment' },
-    { Sno: 5, EstablishmentID: '37513751', CRNumber: '', CustomsCode: 'L2775', Agencyname: 'new ncm2', Status: 'pending Approval', CreationDate: '27/08/2023', ClearingAgencyType: 'Goverment' },
+    { Sno: 2, EstablishmentID: '34555558', CRNumber: '', CustomsCode: 'L2774', Agencyname: 'angular FZc', Status: 'Rejected', CreationDate: '27/08/2023', ClearingAgencyType: 'Private' },
+    { Sno: 3, EstablishmentID: '32321324', CRNumber: '', CustomsCode: 'L2770', Agencyname: 'non gov', Status: 'pending Approval', CreationDate: '25/08/2023', ClearingAgencyType: 'Private' },
+    { Sno: 4, EstablishmentID: '97876532', CRNumber: '', CustomsCode: 'L2769', Agencyname: 'new ncm legacy', Status: 'pending Approval', CreationDate: '24/08/2023', ClearingAgencyType: 'Goverment' },
+    { Sno: 5, EstablishmentID: '37513751', CRNumber: '188433', CustomsCode: 'L2751', Agencyname: 'Abu Sukun 81', Status: 'pending Approval', CreationDate: '30/08/2023', ClearingAgencyType: 'Public' },
 
   ]
 
 
   Onpostformsearch() {
-    console.log(this.postform.value)
-
-
-
+    if (this.postform.valid) {
+      console.log(this.postform.value)
+    }
   }
 
   onChangeLang(eve: Event) {
@@ -146,6 +154,3 @@ export class AppComponent implements OnInit, AfterViewInit {
     console.log('click')
   }
 }
-
-
-
