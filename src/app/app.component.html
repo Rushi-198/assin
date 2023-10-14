@@ -1,291 +1,332 @@
-<header>
-    <div class="row mb-3">
-        <div class="col-12 text-right">
-            <!-- <button class="btn btn-primary mr-4" (click)="onLangChange($event)">Header</button> -->
-            <select name="" id="" #selectLang (change)="switchLanguage(selectLang.value)" class="bg-warning mr-4">
-                <option [value]="lang" *ngFor="let lang of languageArray" [selected]="lang === currentLanguage">
-                    {{lang.includes('en') ? 'English' : 'Arabic'}}
-                </option>
-            </select>
-        </div>
-    </div>
+<div class="container-fluid">
     <div class="row">
-        <div class="col-12 ">
-            <ul class="navlist mr-4">
-                <li>
-                    <a class="active">Home</a>
-                </li>
-                <li>
-                    <a>Contact Us</a>
-                </li>
-                <li>
-                    <a>Logout</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</header>
-
-
-<div class="row " #row>
-    <div class="col-3 p-0">
-        <p class="ha mb-0 ">{{"Good Morning" | translate}}
-            <br>
-            02/10/2023 11.00
-        </p>
-
-        <mat-accordion>
-            <!-- <mat-expansion-panel hideToggle>
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        This is the expansion title
-                    </mat-panel-title>
-
-                </mat-expansion-panel-header>
-                <p>This is the primary content of the panel.</p>
-            </mat-expansion-panel> -->
-            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                <mat-expansion-panel-header>
-                    <mat-panel-title> <mat-icon>arrow_right</mat-icon>
-                        {{'System Administration' | translate}}
-                    </mat-panel-title>
-
-                </mat-expansion-panel-header>
-                <p>{{"Hello" | translate}}</p>
-            </mat-expansion-panel>
-
-            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                <mat-expansion-panel-header>
-                    <mat-panel-title> <mat-icon>arrow_right</mat-icon>
-                        {{"Private warehouses"| translate}}
-                    </mat-panel-title>
-
-                </mat-expansion-panel-header>
-                <p>{{"Hello" | translate}}</p>
-            </mat-expansion-panel>
-
-            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                <mat-expansion-panel-header>
-                    <mat-panel-title> <mat-icon>arrow_right</mat-icon>
-                        {{"Sports events Clearing Agency Authorization" | translate}}
-                    </mat-panel-title>
-
-                </mat-expansion-panel-header>
-
-                <p>{{"Hello" | translate}}</p>
-            </mat-expansion-panel>
-
-            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                <mat-expansion-panel-header>
-                    <mat-panel-title> <mat-icon>arrow_right</mat-icon>
-                        {{"Registration" | translate}}
-                    </mat-panel-title>
-
-                </mat-expansion-panel-header>
-
-
-                <p><span class="box"></span>{{"Account Management" | translate}}</p>
-
-
-                <p><span class="box"></span>{{"Activate Account" | translate}}</p>
-
-
-                <p><span class="box"></span>{{"User Management" | translate}}</p>
-
-
-                <p><span class="box"></span>{{"Approve Clearing Agency" | translate}}</p>
-
-
-                <p><span class="box"></span>{{"Approve Clearing Agent" | translate}}</p>
-
-
-                <p><span class="box"></span>{{"Reset Password/Unlock User" | translate}}</p>
-
-
-                <p><span class="box"></span>{{"Print User ID Card" | translate}}</p>
-
-
-                <p><span class="box"></span>{{"Search for AEO traders" | translate}}</p>
-
-
-                <p><span class="box"></span>{{"Create Request" | translate}}</p>
-
-            </mat-expansion-panel>
-
-            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                <mat-expansion-panel-header>
-                    <mat-panel-title> <mat-icon>arrow_right</mat-icon>
-                        {{"Cargo Manifest" | translate}}
-                    </mat-panel-title>
-
-                </mat-expansion-panel-header>
-                <p>{{"Hello" | translate}}</p>
-            </mat-expansion-panel>
-
-            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                <mat-expansion-panel-header>
-                    <mat-panel-title> <mat-icon>arrow_right</mat-icon>
-                        {{ "Detained Goods" | translate}}
-                    </mat-panel-title>
-
-                </mat-expansion-panel-header>
-                <p>{{"Hello" | translate}}</p>
-            </mat-expansion-panel>
-
-            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                <mat-expansion-panel-header>
-                    <mat-panel-title> <mat-icon>arrow_right</mat-icon>
-
-                        {{"Decleration" | translate}}
-                    </mat-panel-title>
-
-                </mat-expansion-panel-header>
-                <p>{{"Hello" | translate}}</p>
-            </mat-expansion-panel>
-
-            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                <mat-expansion-panel-header>
-                    <mat-panel-title> <mat-icon>arrow_right</mat-icon>
-                        {{"Tariff Management" | translate}}
-                    </mat-panel-title>
-
-                </mat-expansion-panel-header>
-
-            </mat-expansion-panel>
-
-
-        </mat-accordion>
-    </div>
-
-
-
-    <div class="col-9 p-0 ">
-        <div>
-            <img src="../assets/images/ship_183625.jpg " alt="ship">
-        </div>
-
-        <div class="card m-3">
-            <div class="card-header">
-                <p class="bg-secondary text-white">
-                    Approve Clearing Agency
-                </p>
-            </div>
-            <div class="card-body">
-
-                <h3 class="search-head">
-                    <span class="box"></span> Search Criteria
-                </h3>
-                <hr class="w-100 bg-secondary">
-                <form [formGroup]="postform" (ngSubmit)="Onpostformsearch()">
-                    <div class="row">
-                        <div class="col-6">
-
-                            <div class="form-group d-flex justify-content-between mb-4">
-                                <label for="CR Number">CR Number</label>
-                                <input type="text" class="form-control w-75" formControlName="CRNumber">
-                            </div>
-
-                            <div class=" form-group d-flex justify-content-between mb-4">
-                                <label for="Agency name">Agency name</label>
-                                <input type="text" class="form-control w-75" formControlName="Agencyname">
-                            </div>
-                            <div class="form-group d-flex justify-content-between  mb-4">
-                                <label for="Customs Code">Customs Code</label>
-                                <input type="text" class="form-control w-75" formControlName="CustomsCode">
-                            </div>
-                            <div class=" form-group d-flex justify-content-between mb-4">
-                                <label for="Creation Date From">Creation Date From</label>
-                                <input type="date" class="form-control w-75" formControlName="CreationDateFrom">
-                            </div>
-                            <div class="form-group d-flex  mb-4">
-                                <label for="ClearingAgencyType">Clearing Agency Type</label>
-                                <select class="form-control w-25 ml-5" formControlName="ClearingAgencyType">
-                                    <option value="">-ALL-</option>
-                                    <option value="one">one</option>
-                                    <option value="two">two</option>
-                                </select>
-                            </div>
-
-                        </div>
-
-
-                        <div class="col-6 pl-5">
-                            <div class="form-group d-flex justify-content-between ">
-                                <label for="Status">Status</label>
-                                <select class="form-control w-75" formControlName="Status">
-                                    <option value="">-select one-</option>
-                                    <option value="one">one</option>
-                                    <option value="two">two</option>
-                                </select>
-                            </div>
-                            <div class="d-flex justify-content-between mb-4">
-                                <label for="Establishment ID">Establishment ID</label>
-                                <input type="text" class="form-control w-75" formControlName="EstablishmentID">
-                            </div>
-                            <div class="d-flex justify-content-between mb-4">
-                                <label for="Creation Date To">Creation Date To</label>
-                                <input type="date" class="form-control w-75" formControlName="CreationDateFrom">
-                            </div>
-                        </div>
-                        <div class="bg-secondary w-100 p-2">
-                            <button class="btn btn-light mr-4">Search</button>
-                            <button class="btn btn-light " (click)="postform.reset()" type="button">Reset</button>
-                        </div>
-
-                    </div>
-                </form>
-            </div>
-
-
-            <div class="card-body">
-                <h3 class="search-head">
-                    <span class="box"></span> Search Result
-                </h3>
-                <hr class="w-100 bg-secondary">
-                <div class=" d-flex justify-content-between align-items-center">
-                    <div>
-                        <button class="p-0" style="height: 28px;"
-                            (click)="decreaseCount()"><mat-icon>arrow_left</mat-icon></button>
-                        <span class="mx-2">page {{count}} of 71</span>
-                        <button class="p-0" style="height: 28px;" (click)="increaseCount()">
-                            <mat-icon>arrow_right</mat-icon></button>
-
-                        go to page
-                        <input type=" text" value="1" class="w-25">
-                        <button class="btn btn-secondary ml-3 " (click)="Ongo()">Go</button>
-                    </div>
-                    <div> <input type="form-control" type="text" placeholder="Search by ID" [(ngModel)]="searchval">
+        <div class="col-12">
+            <header>
+                <div class="row mb-3">
+                    <div class="col-md-12 text-right">
+                        <!-- <button class="btn btn-primary mr-4" (click)="onLangChange($event)">Header</button> -->
+                        <select name="" id="" #selectLang (change)="switchLanguage(selectLang.value)"
+                            class="bg-warning mr-4">
+                            <option [value]="lang" *ngFor="let lang of languageArray"
+                                [selected]="lang === currentLanguage">
+                                {{lang.includes('en') ? 'English' : 'Arabic'}}
+                            </option>
+                        </select>
                     </div>
                 </div>
-                <br>
-                <table class="table table-striped table-bordered table-sm row-border hover" datatable
-                    [dtOptions]="dtOptions">
-                    <thead>
-                        <tr>
-                            <th> S/No</th>
-                            <th> EstablishmentID</th>
-                            <th>CRNumber</th>
-                            <th>Customs Code</th>
-                            <th>Agencyname</th>
-                            <th>Status</th>
-                            <th>CreationDate</th>
-                            <th>ClearingAgencyType</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let group of data | search : searchval">
-                            <td>{{group.Sno}}</td>
-                            <td>{{group.EstablishmentID}}</td>
-                            <td>{{group.CRNumber}}</td>
-                            <td>{{group.CustomsCode}}</td>
-                            <td>{{group.Agencyname}}</td>
-                            <td>{{group.Status}}</td>
-                            <td>{{group.CreationDate}}</td>
-                            <td>{{group.ClearingAgencyType}}</td>
+                <div class="row">
+                    <div class="col-md-12 ">
+                        <ul class="navlist mr-4">
+                            <li>
+                                <a class="active">Home</a>
+                            </li>
+                            <li>
+                                <a>Contact Us</a>
+                            </li>
+                            <li>
+                                <a>Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </header>
+        </div>
+    </div>
 
-                        </tr>
-                    </tbody>
-                </table>
+
+
+    <div class="row " [ngClass]="{'d-flex': lang?.includes('ar'), 'flex-row-reverse': lang?.includes('ar')}">
+        <div class="col-md-3">
+            <p class="ha mb-0 " [ngClass]="{'d-flex': lang?.includes('ar'), 'flex-row-reverse': lang?.includes('ar')}">
+                {{"Good Morning" | translate}}
+                <br>
+                02/10/2023 11.00
+            </p>
+
+            <mat-accordion>
+                <!-- <mat-expansion-panel hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            This is the expansion title
+                        </mat-panel-title>
+    
+                    </mat-expansion-panel-header>
+                    <p>This is the primary content of the panel.</p>
+                </mat-expansion-panel> -->
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title
+                            [ngClass]="{'d-flex': lang?.includes('ar'), 'flex-row-reverse': lang?.includes('ar')}">
+                            <mat-icon>arrow_right</mat-icon>
+                            {{'System Administration' | translate}}
+                        </mat-panel-title>
+
+                    </mat-expansion-panel-header>
+                    <p [ngClass]="{'d-flex': lang?.includes('ar'), 'flex-row-reverse': lang?.includes('ar')}">{{"Hello"
+                        | translate}}</p>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title
+                            [ngClass]="{'d-flex': lang?.includes('ar'), 'flex-row-reverse': lang?.includes('ar')}">
+                            <mat-icon>arrow_right</mat-icon>
+                            {{"Private warehouses"| translate}}
+                        </mat-panel-title>
+
+                    </mat-expansion-panel-header>
+                    <p [ngClass]="{'d-flex': lang?.includes('ar'), 'flex-row-reverse': lang?.includes('ar')}">{{"Hello"
+                        | translate}}</p>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title
+                            [ngClass]="{'d-flex': lang?.includes('ar'), 'flex-row-reverse': lang?.includes('ar')}">
+                            <mat-icon>arrow_right</mat-icon>
+                            {{"Sports events Clearing Agency Authorization" | translate}}
+                        </mat-panel-title>
+
+                    </mat-expansion-panel-header>
+
+                    <p [ngClass]="{'d-flex': lang?.includes('ar'), 'flex-row-reverse': lang?.includes('ar')}">{{"Hello"
+                        | translate}}</p>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title
+                            [ngClass]="{'d-flex': lang?.includes('ar'), 'flex-row-reverse': lang?.includes('ar')}">
+                            <mat-icon>arrow_right</mat-icon>
+                            {{"Registration" | translate}}
+                        </mat-panel-title>
+
+                    </mat-expansion-panel-header>
+
+
+                    <p [ngClass]="{'d-flex': lang?.includes('ar'), 'flex-row-reverse': lang?.includes('ar')}"><span
+                            class="box"></span>{{"Account Management" | translate}}</p>
+
+
+                    <p [ngClass]="{'d-flex': lang?.includes('ar'), 'flex-row-reverse': lang?.includes('ar')}"><span
+                            class="box"></span>{{"Activate Account" | translate}}</p>
+
+
+                    <p [ngClass]="{'d-flex': lang?.includes('ar'), 'flex-row-reverse': lang?.includes('ar')}"><span
+                            class="box"></span>{{"User Management" | translate}}</p>
+
+
+                    <p [ngClass]="{'d-flex': lang?.includes('ar'), 'flex-row-reverse': lang?.includes('ar')}"><span
+                            class="box"></span>{{"Approve Clearing Agency" | translate}}</p>
+
+
+                    <p [ngClass]="{'d-flex': lang?.includes('ar'), 'flex-row-reverse': lang?.includes('ar')}"><span
+                            class="box"></span>{{"Approve Clearing Agent" | translate}}</p>
+
+
+                    <p [ngClass]="{'d-flex': lang?.includes('ar'), 'flex-row-reverse': lang?.includes('ar')}"><span
+                            class="box"></span>{{"Reset Password/Unlock User" | translate}}</p>
+
+
+                    <p [ngClass]="{'d-flex': lang?.includes('ar'), 'flex-row-reverse': lang?.includes('ar')}"><span
+                            class="box"></span>{{"Print User ID Card" | translate}}</p>
+
+
+                    <p [ngClass]="{'d-flex': lang?.includes('ar'), 'flex-row-reverse': lang?.includes('ar')}"><span
+                            class="box"></span>{{"Search for AEO traders" | translate}}</p>
+
+
+                    <p [ngClass]="{'d-flex': lang?.includes('ar'), 'flex-row-reverse': lang?.includes('ar')}"><span
+                            class="box"></span>{{"Create Request" | translate}}</p>
+
+                </mat-expansion-panel>
+
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title
+                            [ngClass]="{'d-flex': lang?.includes('ar'), 'flex-row-reverse': lang?.includes('ar')}">
+                            <mat-icon>arrow_right</mat-icon>
+                            {{"Cargo Manifest" | translate}}
+                        </mat-panel-title>
+
+                    </mat-expansion-panel-header>
+                    <p [ngClass]="{'d-flex': lang?.includes('ar'), 'flex-row-reverse': lang?.includes('ar')}">{{"Hello"
+                        | translate}}</p>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title
+                            [ngClass]="{'d-flex': lang?.includes('ar'), 'flex-row-reverse': lang?.includes('ar')}">
+                            <mat-icon>arrow_right</mat-icon>
+                            {{ "Detained Goods" | translate}}
+                        </mat-panel-title>
+
+                    </mat-expansion-panel-header>
+                    <p [ngClass]="{'d-flex': lang?.includes('ar'), 'flex-row-reverse': lang?.includes('ar')}">{{"Hello"
+                        | translate}}</p>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title
+                            [ngClass]="{'d-flex': lang?.includes('ar'), 'flex-row-reverse': lang?.includes('ar')}">
+                            <mat-icon>arrow_right</mat-icon>
+
+                            {{"Decleration" | translate}}
+                        </mat-panel-title>
+
+                    </mat-expansion-panel-header>
+                    <p [ngClass]="{'d-flex': lang?.includes('ar'), 'flex-row-reverse': lang?.includes('ar')}">{{"Hello"
+                        | translate}}</p>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title
+                            [ngClass]="{'d-flex': lang?.includes('ar'), 'flex-row-reverse': lang?.includes('ar')}">
+                            <mat-icon>arrow_right</mat-icon>
+                            {{"Tariff Management" | translate}}
+                        </mat-panel-title>
+
+                    </mat-expansion-panel-header>
+
+                </mat-expansion-panel>
+
+
+            </mat-accordion>
+        </div>
+
+
+
+        <div class="col-md-9 ">
+            <div>
+                <img src="../assets/images/ship_183625.jpg " alt="ship" class="img-fluid">
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <p class="bg-secondary text-white">
+                        Approve Clearing Agency
+                    </p>
+                </div>
+                <div class="card-body">
+
+                    <h3 class="search-head">
+                        <span class="box"></span> Search Criteria
+                    </h3>
+                    <hr class="w-100 bg-secondary">
+                    <form [formGroup]="postform" (ngSubmit)="Onpostformsearch()">
+                        <div class="row">
+                            <div class="col-6">
+
+                                <div class="form-group d-flex justify-content-between mb-4">
+                                    <label for="CR Number">CR Number</label>
+                                    <input type="text" class="form-control w-75" formControlName="CRNumber">
+                                </div>
+
+                                <div class=" form-group d-flex justify-content-between mb-4">
+                                    <label for="Agency name">Agency name</label>
+                                    <input type="text" class="form-control w-75" formControlName="Agencyname">
+                                </div>
+                                <div class="form-group d-flex justify-content-between  mb-4">
+                                    <label for="Customs Code">Customs Code</label>
+                                    <input type="text" class="form-control w-75" formControlName="CustomsCode">
+                                </div>
+                                <div class=" form-group d-flex justify-content-between mb-4">
+                                    <label for="Creation Date From">Creation Date From</label>
+                                    <input type="date" class="form-control w-75" formControlName="CreationDateFrom">
+                                </div>
+                                <div class="form-group d-flex  mb-4">
+                                    <label for="ClearingAgencyType">Clearing Agency Type</label>
+                                    <select class="form-control w-25 ml-5" formControlName="ClearingAgencyType">
+                                        <option value="">-ALL-</option>
+                                        <option value="one">one</option>
+                                        <option value="two">two</option>
+                                    </select>
+                                </div>
+
+                            </div>
+
+
+                            <div class="col-6 pl-5">
+                                <div class="form-group d-flex justify-content-between ">
+                                    <label for="Status">Status</label>
+                                    <select class="form-control w-75" formControlName="Status">
+                                        <option value="">-select one-</option>
+                                        <option value="one">one</option>
+                                        <option value="two">two</option>
+                                    </select>
+                                </div>
+                                <div class="d-flex justify-content-between mb-4">
+                                    <label for="Establishment ID">Establishment ID</label>
+                                    <input type="text" class="form-control w-75" formControlName="EstablishmentID">
+                                </div>
+                                <div class="d-flex justify-content-between mb-4">
+                                    <label for="Creation Date To">Creation Date To</label>
+                                    <input type="date" class="form-control w-75" formControlName="CreationDateFrom">
+                                </div>
+                            </div>
+                            <div class="bg-secondary w-100 p-2">
+                                <button class="btn btn-light mr-4">Search</button>
+                                <button class="btn btn-light " (click)="postform.reset()" type="button">Reset</button>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+
+
+                <div class="card-body">
+                    <h3 class="search-head">
+                        <span class="box"></span> Search Result
+                    </h3>
+                    <hr class="w-100 bg-secondary">
+                    <div class=" d-flex justify-content-between align-items-center">
+                        <div>
+                            <button class="p-0" style="height: 28px;"
+                                (click)="decreaseCount()"><mat-icon>arrow_left</mat-icon></button>
+                            <span class="mx-2">page {{count}} of 71</span>
+                            <button class="p-0" style="height: 28px;" (click)="increaseCount()">
+                                <mat-icon>arrow_right</mat-icon></button>
+
+                            go to page
+                            <input type=" text" value="1" class="w-25">
+                            <button class="btn btn-secondary ml-3 " (click)="Ongo()">Go</button>
+                        </div>
+                        <div> <input type="form-control" type="text" placeholder="Search by ID" [(ngModel)]="searchval">
+                        </div>
+                    </div>
+                    <br>
+                    <table class="table table-striped table-bordered table-sm row-border hover" datatable
+                        [dtOptions]="dtOptions">
+                        <thead>
+                            <tr>
+                                <th> S/No</th>
+                                <th> EstablishmentID</th>
+                                <th>CRNumber</th>
+                                <th>Customs Code</th>
+                                <th>Agencyname</th>
+                                <th>Status</th>
+                                <th>CreationDate</th>
+                                <th>ClearingAgencyType</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let group of data | search : searchval">
+                                <td>{{group.Sno}}</td>
+                                <td>{{group.EstablishmentID}}</td>
+                                <td>{{group.CRNumber}}</td>
+                                <td>{{group.CustomsCode}}</td>
+                                <td>{{group.Agencyname}}</td>
+                                <td>{{group.Status}}</td>
+                                <td>{{group.CreationDate}}</td>
+                                <td>{{group.ClearingAgencyType}}</td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

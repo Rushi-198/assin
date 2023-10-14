@@ -1,4 +1,6 @@
-import { AfterViewChecked, AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+
+
+import { ChangeDetectionStrategy, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -10,68 +12,23 @@ import { TranslateService } from '@ngx-translate/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 
 })
-export class AppComponent implements OnInit, AfterViewInit {
+export class AppComponent implements OnInit {
   title = 'practice1';
-
-  @ViewChild('row') row!: ElementRef<HTMLElement>
-  constructor(private translate: TranslateService) {
-    this.addLanguage()
-
-  }
-
-  ngAfterViewInit(): void {
-    const lang = localStorage.getItem('lang')
-
-    if (lang) {
-      this.currentLanguage = lang
-      if (lang?.includes('ar')) {
-        console.log('yes');
-
-        this.row.nativeElement?.classList.add('flex-row-reverse')
-      } else {
-        this.row.nativeElement?.classList.remove('flex-row-reverse')
-
-      }
-    }
-  }
-
   languageArray: Array<string> = this.translate.getLangs();
   currentLanguage: string = this.translate.currentLang;
+  lang: any
 
-  addLanguage() {
+  @ViewChild('row') row!: ElementRef<HTMLElement>
 
-    this.translate.addLangs([ 'en', 'ar' ])
+  constructor(
+    private translate: TranslateService
+  ) { }
 
-
-    const lang = localStorage.getItem('lang')
-
-    if (lang) {
-      this.translate.setDefaultLang(lang);
-    } else {
-      this.translate.setDefaultLang('en');
-    }
-  }
-
-  switchLanguage(language: string) {
-    localStorage.setItem('lang', language)
-    this.translate.use(language);
-
-    language.includes('ar') ? this.row.nativeElement.classList.add('flex-row-reverse') : this.row.nativeElement.classList.remove('flex-row-reverse')
-  }
-
-
-  searchval !: any;
-  panelOpenState = false;
-  postform!: FormGroup
-  dtOptions: DataTables.Settings = {};
-
-  count: number = 1
-  //dtTrigger: Subject<any> = new Subject<any>()
 
   ngOnInit(): void {
-    this.postform = new FormGroup({
+    this.addLanguage()
 
-      // S/No: new FormControl(null, Validators.required),
+    this.postform = new FormGroup({
       EstablishmentID: new FormControl(null, Validators.required),
       CRNumber: new FormControl(null, Validators.required),
       CustomsCode: new FormControl(null, Validators.required),
@@ -79,12 +36,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       Status: new FormControl('', Validators.required),
       CreationDateFrom: new FormControl(null, Validators.required),
       ClearingAgencyType: new FormControl('', Validators.required),
-      // CreationDateTo: new FormControl(null, Validators.required),
-
     })
-
-
-
 
 
     this.dtOptions = {
@@ -96,6 +48,39 @@ export class AppComponent implements OnInit, AfterViewInit {
 
     }
   }
+
+
+
+
+  addLanguage() {
+
+    this.translate.addLangs([ 'en', 'ar' ])
+    this.lang = localStorage.getItem('lang')
+
+    if (this.lang) {
+      this.translate.setDefaultLang(this.lang);
+      this.currentLanguage = this.lang
+    } else {
+      this.translate.setDefaultLang('en');
+    }
+  }
+
+
+  switchLanguage(language: string) {
+    localStorage.setItem('lang', language)
+    this.translate.use(language);
+    this.lang = language
+  }
+
+
+  searchval !: any;
+  panelOpenState = false;
+  postform!: FormGroup
+  dtOptions: DataTables.Settings = {};
+
+  count: number = 1
+  //dtTrigger: Subject<any> = new Subject<any>()
+
 
   public data = [
     { Sno: 1, EstablishmentID: '12356784', CRNumber: '', CustomsCode: 'L2775', Agencyname: 'new ncm2', Status: 'pending Approval', CreationDate: '27/08/2023', ClearingAgencyType: 'Goverment' },
@@ -113,38 +98,16 @@ export class AppComponent implements OnInit, AfterViewInit {
     }
   }
 
-  onChangeLang(eve: Event) {
-    // console.log(eve.target);
-    let ele = <HTMLSelectElement>eve.target
-    // console.log(ele.value);
-    // if (ele.value === 'ar') {
-    //   ele.closest('header')?.nextElementSibling?.classList.add('flex-row-reverse')
-    // } else {
-    //   ele.closest('header')?.nextElementSibling?.classList.remove('flex-row-reverse')
 
-    // }
-
-
-    ele.value === 'ar' ? ele.closest('header')?.nextElementSibling?.classList.add('flex-row-reverse') : ele.closest('header')?.nextElementSibling?.classList.remove('flex-row-reverse')
-
-  }
-  // onLangChange(eve: Event) {
-  //   let ele = eve.target as HTMLButtonElement
-  //   // flex-row-reverse
-  //   // console.log(ele.closest('header')?.nextElementSibling);
-  //   ele.closest('header')?.nextElementSibling?.classList.toggle('flex-row-reverse')
-  // }
   increaseCount() {
     if (this.count < 71) {
       this.count++
-
     }
   }
 
 
   decreaseCount() {
     if (this.count > 1) {
-
       this.count--
     }
 
